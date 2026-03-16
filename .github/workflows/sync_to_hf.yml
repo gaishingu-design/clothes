@@ -2,8 +2,7 @@ name: Sync to Hugging Face
 on:
   push:
     branches: [main]
-  force_push_handler:
-    types: [track]
+  workflow_dispatch:
 
 jobs:
   sync-to-hub:
@@ -16,4 +15,5 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://YOUR_HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/atena31415/ar-vton main
+        run: |
+          git push --force https://YOUR_USERNAME:$HF_TOKEN@huggingface.co/spaces/atena31415/ar-vton main
